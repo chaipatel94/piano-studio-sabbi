@@ -93,23 +93,23 @@ code{ background: rgba(255,255,255,0.08); padding: 0.1rem 0.35rem; border-radius
   background: rgba(0,0,0,0.45);
 }
 .hero-inner{
- position: relative; /* keeps content above overlay */
+  position: relative; /* keeps content above overlay */
   width: min(920px, calc(100% - 2rem));
   margin: 0 auto;
   text-align: left;
 }
+
+/* Hero 2-column layout (keep if you still use hero-image; safe to keep even if you remove it) */
 .hero-layout{
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 1.5rem;
   align-items: center;
 }
-
 .hero-image{
   display: flex;
   justify-content: center;
 }
-
 .hero-image img{
   width: 100%;
   max-width: 320px;
@@ -117,12 +117,6 @@ code{ background: rgba(255,255,255,0.08); padding: 0.1rem 0.35rem; border-radius
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.14);
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-/* Mobile: stack image under text */
-@media (max-width: 860px){
-  .hero-layout{ grid-template-columns: 1fr; }
-  .hero-image img{ max-width: 260px; }
 }
 
 h1{
@@ -249,10 +243,39 @@ h2{
   flex-wrap: wrap;
 }
 
+/* =========================
+   ABOUT (Hebrew text + photo)
+   ========================= */
+.about-layout{
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.about-text{
+  color: var(--text);
+}
+
+.about-photo{
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo img{
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
 @media (max-width: 860px){
   .grid.three{ grid-template-columns: 1fr; }
   .grid.two{ grid-template-columns: 1fr; }
   .menu-btn{ display:inline-flex; }
+
   .nav{
     display:none;
     position: absolute;
@@ -269,4 +292,13 @@ h2{
   .nav.open{ display:flex; }
   .nav a{ padding: 0.65rem 0.8rem; border-radius: 12px; }
   .nav a:hover{ background: rgba(255,255,255,0.06); }
+
+  /* Hero mobile stacking (safe even if you remove hero-image) */
+  .hero-layout{ grid-template-columns: 1fr; }
+  .hero-image img{ max-width: 260px; }
+
+  /* About mobile stacking */
+  .about-layout{ grid-template-columns: 1fr; }
+  .about-photo{ justify-content: flex-start; }
+  .about-photo img{ max-width: 260px; }
 }
