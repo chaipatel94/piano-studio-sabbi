@@ -77,13 +77,54 @@ code{ background: rgba(255,255,255,0.08); padding: 0.1rem 0.35rem; border-radius
 }
 
 .hero{
+  position: relative;
   padding: 4.2rem 0 2.2rem;
+
+  background-image: url("assets/piano.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Dark overlay so text is readable */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45);
 }
 .hero-inner{
+ position: relative; /* keeps content above overlay */
   width: min(920px, calc(100% - 2rem));
   margin: 0 auto;
   text-align: left;
 }
+.hero-layout{
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.hero-image{
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img{
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Mobile: stack image under text */
+@media (max-width: 860px){
+  .hero-layout{ grid-template-columns: 1fr; }
+  .hero-image img{ max-width: 260px; }
+}
+
 h1{
   margin: 0 0 0.6rem;
   font-size: clamp(2rem, 4vw, 3rem);
